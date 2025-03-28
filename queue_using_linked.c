@@ -29,12 +29,12 @@ int dequeue(n1 **f, n1 **r){
         return -1;
     }
     int val = (*f)->data;
-    n1 *temp = *f;
+    //n1 *temp = *f;
     *f = (*f)->next;
     if (*f == NULL) {
         *r = NULL;
     }
-    free(temp);
+    //free(temp);
     printf("Dequeued: %d\n", val);
     return val;
 }
