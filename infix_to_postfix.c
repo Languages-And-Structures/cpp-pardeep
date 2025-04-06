@@ -59,19 +59,22 @@ int isoperator(char infix)
     }
 }
 
-char stacktop(s1 *s){
+char stacktop(s1 *s)
+{
     if (!isEmpty(s))
     {
         return s->arr[s->top];
     }
 }
 
-int precidence(char infix){
-    if (infix=='*'||infix=='/')
+int precidence(char infix)
+{
+    if (infix == '*' || infix == '/')
     {
         return 2;
     }
-    else if(infix=='+'||infix=='-'){
+    else if (infix == '+' || infix == '-')
+    {
         return 1;
     }
     return -1;
@@ -79,30 +82,32 @@ int precidence(char infix){
 
 char *infixtopostfix(s1 *s, char *infix)
 {
-    char *postfix = (char *)malloc((strlen(infix)+1) * sizeof(char));
+    char *postfix = (char *)malloc((strlen(infix) + 1) * sizeof(char));
     int j = 0;
-    int i=0;
-    for (int i = 0; i < strlen(infix); i++) {
-    
-        if (isoperator(infix[i])==0)
+    int i = 0;
+    for (int i = 0; i < strlen(infix); i++)
+    {
+
+        if (isoperator(infix[i]) == 0)
         {
-            postfix[j]=infix[i];
+            postfix[j] = infix[i];
             j++;
         }
-        else {
-            if (!isEmpty(s) && precidence(infix[i]<=precidence(stacktop(s))))
+        else
+        {
+            if (!isEmpty(s) && precidence(infix[i] <= precidence(stacktop(s))))
             {
-                postfix[j++]=pop(s);
+                postfix[j++] = pop(s);
             }
-            push(s,infix[i]);
+            push(s, infix[i]);
         }
     }
     while (!isEmpty(s))
-        {
-            postfix[j]=pop(s);
-            j++;
-        }
-        postfix[j]='\0';  
+    {
+        postfix[j] = pop(s);
+        j++;
+    }
+    postfix[j] = '\0';
 
     return postfix;
 }
@@ -113,9 +118,9 @@ int main()
     s->top = -1;
     s->size = 80;
     s->arr = (char *)malloc(s->size * sizeof(char));
-    char *infix="x+y*z-k";
+    char *infix = "x+y*z-k";
     char *postfix = infixtopostfix(s, infix);
-    printf("%s",postfix);
+    printf("%s", postfix);
     free(s->arr);
     free(s);
     free(postfix);
