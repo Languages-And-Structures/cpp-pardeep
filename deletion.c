@@ -1,37 +1,41 @@
 #include <stdio.h>
 
-int indexdeletion(int arr[],int size,int capacity,int index){
-    if (index>=capacity)
+int indexdeletion(int arr[], int size, int capacity, int index)
+{
+    if (index >= capacity)
     {
         return -1;
     }
-    for (int i = index; i < size-1; i++)
+    for (int i = index; i < size - 1; i++)
     {
-        arr[i]=arr[i+1];
+        arr[i] = arr[i + 1];
     }
     return 1;
 }
 
-void display(int arr[],int size){
+void display(int arr[], int size)
+{
     for (int i = 0; i < size; i++)
     {
-        printf("Element at %d is %d \n",i,arr[i]);
+        printf("Element at %d is %d \n", i, arr[i]);
     }
 }
 
-int main(){
-    int arr[100]={1,2,6,77};
-    int size=4;
+int main()
+{
+    int arr[100] = {1, 2, 6, 77};
+    int size = 4;
     int capacity = 100;
     int index = 0;
-    if (indexdeletion(arr,size,capacity,index)==1)
+    if (indexdeletion(arr, size, capacity, index) == 1)
     {
         printf("deletion sucessfull \n");
-        size-=1;
-        display(arr,size);
+        size -= 1;
+        display(arr, size);
     }
-    else{
+    else
+    {
         printf("!! deletion not sucessfull !! ");
     }
-return 0;
+    return 0;
 }
