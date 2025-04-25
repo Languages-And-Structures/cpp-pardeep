@@ -1,48 +1,53 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node {
+typedef struct Node
+{
     int data;
-    struct Node * left;
-    struct Node * right;
-}p1;
+    struct Node *left;
+    struct Node *right;
+} p1;
 
-p1 * createnode(int data){
+p1 *createnode(int data)
+{
     p1 *n;
-    n=n = (p1 *)malloc(sizeof(p1));
+    n = n = (p1 *)malloc(sizeof(p1));
     n->data = data;
     n->left = NULL;
     n->right = NULL;
     return n;
 }
 
-void insert(p1 *root,int key){
-    p1 *prev=NULL;
-    p1 * ptr;
-    while (root!=NULL)
+void insert(p1 *root, int key)
+{
+    p1 *prev = NULL;
+    p1 *ptr;
+    while (root != NULL)
     {
-        prev=root;
-        if (key==root->data)
+        prev = root;
+        if (key == root->data)
         {
             return;
         }
-        else if (key<root->data)
+        else if (key < root->data)
         {
-            root=root->left;
+            root = root->left;
         }
-        else{
-            root=root->right;
+        else
+        {
+            root = root->right;
         }
     }
-    
-    p1 *new=(p1*)malloc(sizeof(p1));
-    new=createnode(key);
-    if (key<prev->data)
+
+    p1 *new = (p1 *)malloc(sizeof(p1));
+    new = createnode(key);
+    if (key < prev->data)
     {
-        prev->left=new;
+        prev->left = new;
     }
-    else{
-        prev->right=new;
+    else
+    {
+        prev->right = new;
     }
 }
 
@@ -56,7 +61,8 @@ void inorder(p1 *root)
     }
 }
 
-int main(){
+int main()
+{
     p1 *root = createnode(4);
     p1 *left = createnode(1);
     p1 *right = createnode(6);
@@ -68,8 +74,8 @@ int main(){
     left->left = left_left;
     left->right = right_left;
 
-    insert(root,9);
+    insert(root, 9);
     inorder(root);
 
-return 0;
+    return 0;
 }
