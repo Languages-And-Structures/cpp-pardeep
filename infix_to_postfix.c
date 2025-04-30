@@ -65,6 +65,7 @@ char stacktop(s1 *s)
     {
         return s->arr[s->top];
     }
+    return '\0';
 }
 
 int precidence(char infix)
@@ -85,23 +86,24 @@ char *infixtopostfix(s1 *s, char *infix)
     char *postfix = (char *)malloc((strlen(infix) + 1) * sizeof(char));
     int j = 0;
     int i = 0;
-    for (int i = 0; i < strlen(infix); i++)
+    while (infix[i] != '\0')
     {
 
         if (isoperator(infix[i]) == 0)
         {
             postfix[j] = infix[i];
-            j++;
+            j++,i++;
         }
         else
         {
-            if (!isEmpty(s) && precidence(infix[i] <= precidence(stacktop(s))))
+            if (!isEmpty(s) && precidence(infix[i]) <= precidence(stacktop(s)))
             {
                 postfix[j++] = pop(s);
             }
-            push(s, infix[i]);
+            push(s, infix[i++]);
         }
     }
+
     while (!isEmpty(s))
     {
         postfix[j] = pop(s);
