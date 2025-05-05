@@ -14,7 +14,7 @@ void enqueue(q1 **f, q1 **r, int val)
     {
         printf("queue is full\n");
     }
-    else
+    else    
     {
         n->data = val;
         n->next = NULL;
@@ -28,6 +28,16 @@ void enqueue(q1 **f, q1 **r, int val)
             (*r) = n;
         }
     }
+}
+
+int isEmpty(q1 *f){
+    return f==NULL;
+}
+
+int isFull(q1 *r){
+    q1 *n = (q1 *)malloc(sizeof(q1));
+    return n==NULL;
+    free(n);
 }
 
 int dequeue(q1 **f, q1 **r)
