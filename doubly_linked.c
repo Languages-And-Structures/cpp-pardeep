@@ -39,7 +39,19 @@ link *backtraversal(link *head)
     } while (ptr != NULL);
     return head;
 }
-
+link *backtraversal2(link *head)
+{
+    link*ptr=head;
+    while(ptr->Next!=NULL){
+        ptr=ptr->Next;
+    }
+    link *p=ptr;
+    while(p!=NULL){
+        printf("The element in reverse is %d\n",p->data);
+        p=p->Prev;
+    }
+    return head;
+}
 int main()
 {
     link *head;
