@@ -31,6 +31,44 @@ link *insertatstart(link *head, int data)
     head = ptr;
     return head;
 }
+link *insertatstart2(link *head, int data)
+{
+    link*ptr=(link*)malloc(sizeof(link));
+    ptr->data=data;
+    link *p=head->Next;
+    while (p->Next!=head)
+    {
+        p=p->Next;
+    }
+    p->Next = ptr;
+    ptr->Next = head;
+    head = ptr;
+    return head;
+}
+link *insertinbetween(link* head, int index,int data){
+    link *ptr=(link*)malloc(sizeof(link));
+    link*p=head;
+    int i=0;
+    while(i!=index-1){
+        p=p->Next;
+        i++;
+    }
+    ptr->data=data;
+    ptr->Next=p->Next;
+    p->Next=ptr;
+    return head;
+}
+link *insertatend(link* head,int data){
+    link *ptr=(link*)malloc(sizeof(link));
+    link *p=head->Next;
+    while(p->Next!=head){
+        p=p->Next;
+    }
+    ptr->data=data;
+    p->Next=ptr;
+    ptr->Next=head;
+    return head;
+}
 
 int main()
 {
