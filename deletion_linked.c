@@ -44,7 +44,38 @@ link *deleteinbetween(link *head, int index)
     free(q);
     return head;
 }
+link *deleteatend2(link *head)
+{
+    if (head == NULL || head->Next == NULL)
+    {
+        free(head);
+        return NULL;
+    }
 
+    link *p = head;
+    while (p->Next->Next != NULL)
+    {
+        p = p->Next;
+    }
+    link *q = p->Next;
+    p->Next = NULL;
+    free(q);
+    return head;
+}
+link *deleteinbetween2(link *head, int index)
+{
+    link *p = head;
+    int i = 0;
+    while (i != index - 1)
+    {
+        p = p->Next;
+        i++;
+    }
+    link *q = p->Next;
+    p->Next = p->Next->Next;
+    free(q);
+    return head;
+}
 link *deleteatend(link *head)
 {
     link *ptr = (link *)malloc(sizeof(link));
