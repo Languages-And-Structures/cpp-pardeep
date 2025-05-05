@@ -58,7 +58,6 @@ int peek(s1 *s,int i){
     else{
         return s->arr[s->top-i+1];
     }
-    
 }
 
 int stacktop(s1 * s){
