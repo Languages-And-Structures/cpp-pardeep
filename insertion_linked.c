@@ -52,6 +52,19 @@ link *insertattheend(link *head, int data)
     ptr->Next = NULL;
     return head;
 }
+link *insertafterNode(link *head, int data, int nodedata)
+{
+    link *ptr = (link *)malloc(sizeof(link));
+    ptr->data = data;
+    link *p = head;
+    while (p->data != nodedata)
+    {
+        p = p->Next;
+    }
+    ptr->Next = p->Next;
+    p->Next = ptr;
+    return head;
+}
 
 int main()
 {
